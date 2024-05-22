@@ -6,22 +6,31 @@
     .dimgray {
         color: dimgray;
     }
-
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="jumbotron center-block" style="width:80%; background-color:aliceblue;">
-    <h2>Trust psycheo2psyche with your mental health</h2>
-    <p class="lead">
-        Our mission is simple: to help you feel better, get better and stay better.
+    
+    
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Trust psycheo2psyche with your mental health</h2>
+        <p class="lead">
+            Our mission is simple: to help you feel better, get better and stay better.
+            
+            We bring together self-care, support from qualified therapists and psychiatrists,
+            as well as community access to deliver the best quality mental healthcare for your needs.
 
-        We bring together self-care, support from qualified therapists and psychiatrists,
-        as well as community access to deliver the best quality mental healthcare for your needs.
-    </p>
-    @if (Session["User"] == null)
-    {
-        <p><a href="/Authentication/Signup" class="btn btn-lg btn-cadetblue">Sign up &raquo;</a></p>
-    }
-
+        </p>
+        @if (Session["User"] == null)
+        {
+            <p><a href="/Authentication/Signup" class="btn btn-lg btn-cadetblue">Sign up &raquo;</a></p>
+        }
+    </div>
+    <div class="col-lg-2">
+    <img src="~/Content/images/logo.png"
+     style="" width="230" alt="psychon2psyche" />
+    </div>
+</div>
 </div>
 <div class="row center-block" style="width:80%;">
     <div class="col-md-4">
@@ -30,7 +39,7 @@
         <p>
             Do you feel like your sadness just won’t go away, and it is hard to find a way ahead? We can help.
         </p>
-        <p><a class="btn btn-cadetblue" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-cadetblue" href="/Service/Index?ServiceCalled=Depression">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <center><img src="~/Content/images/alcoholaddiction.jpg" style="width:300px;" /></center>
@@ -39,13 +48,39 @@
             Is your use of alcohol interfacing with your ability to lead your life fully?
             You can find the right support.
         </p>
-        <p><a class="btn btn-cadetblue" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <p><a class="btn btn-cadetblue" href="/Service/Index?ServiceCalled=Alcohol%20Addiction">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <center><img src="~/Content/images/Anxiety.jpg" style="width:300px;" /></center>
         <h2>Anxiety</h2>
         <p>Do you often feel restless, worried or on-edge? Let us help you on how to cope better.</p>
-        <p><a class="btn btn-cadetblue" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <p><a class="btn btn-cadetblue" href="/Service/Index?ServiceCalled=Anxiety">Learn more &raquo;</a></p>
+    </div>
+</div>
+<br />
+<br />
+<div class="row center-block" style="width:80%;">
+    <div class="col-md-4">
+        <center><img src="~/Content/images/OCD.jpg" style="width:300px;" /></center>
+        <h2>OCD</h2>
+        <p>
+            Yes I have ocd. No, it isn't just about being a "neat freak
+        </p>
+        <p><a class="btn btn-cadetblue" href="/Service/Index?ServiceCalled=OCD">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <center><img src="~/Content/images/ADHD.jpg" style="width:300px;" /></center>
+        <h2>ADHA</h2>
+        <p>
+            ADHA isn't a bad thing, and you shouldn't feel different from those without ADHA."
+        </p>
+        <p><a class="btn btn-cadetblue" href="/Service/Index?ServiceCalled=ADHA">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <center><img src="~/Content/images/schizophenia.jpg" style="width:300px;" /></center>
+        <h2>schizophrenia</h2>
+        <p>Schizophrenia cannot be understood without understanding despair.</p>
+        <p><a class="btn btn-cadetblue" href="/Service/Index?ServiceCalled=Schizophrenia">Learn more &raquo;</a></p>
     </div>
 </div>
 <hr />
@@ -109,11 +144,11 @@
                 <br />
                 <p style="font-size:xx-large;">
                     &copy; psycheo2psyche | <a href="https://www.facebook.com/psycheo2psyche" class="fa fa-facebook"></a> | <a href="https://psycheo2psyche.x.com/" class="fa fa-twitter"></a> | <a href="http://www.instagram.com/psycheo2psyche" class="fa fa-instagram"></a>
-                    
-                    
+
+
                 </p>
 
-               
+
             </div>
         </div>
     </section>

@@ -1,14 +1,12 @@
 ﻿@model HealthCheck.Models.UserAccountModel
 
-
 <style>
     body {
         background-image: url('/Content/images/bg3.jpg');
-        background-size:cover;
+        background-size: cover;
         background-repeat: no-repeat;
         height: 100%;
     }
-
 </style>
 
 <center style="margin-top:100px;">
@@ -19,6 +17,8 @@ background-color:ghostwhite;  border-radius:15px 15px; width:400px; opacity: 1.0
             {
                 @Html.AntiForgeryToken()
                 <br />
+                <img src="~/Content/images/logo.png"
+                     style="" width="150" alt="psychon2psyche" />
                 <h4>Login</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -26,14 +26,21 @@ background-color:ghostwhite;  border-radius:15px 15px; width:400px; opacity: 1.0
                 <div class="form-group">
                     <div class="col-md-12">
                         @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", placeholder = "Email ID*", type = "email", required = true, style = "font-size:medium;" } })
-                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                        @if (Model.MobileNo != null)
+                        {
+                            @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                        }
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password (min 8 characters)*", type = "password", required = true, maxlength = 20, style = "font-size:medium;" } })
-                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password (min 8 characters)*", type = "password", required = true, maxlength = 20, style = "font-size:medium;" } })
+                        @if (Model.MobileNo != null)
+                        {
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        }
+
                     </div>
                 </div>
 
@@ -43,8 +50,14 @@ background-color:ghostwhite;  border-radius:15px 15px; width:400px; opacity: 1.0
                             background-color:green; color:white; width:100px">
                             Login
                         </button>
+                        
                     </div>
                 </div>
+                if (Model != null)
+                {
+                    <p class="text-danger" style="font-size:medium;">@Model.ModelError</p>
+                }
+
             }
         </div>
         <hr />
@@ -54,7 +67,7 @@ background-color:ghostwhite;  border-radius:15px 15px; width:400px; opacity: 1.0
         <div class="d-flex justify-content-center">
             <a href="#">Forgot your password?</a>
         </div>
-        <br/>
+        <br />
     </div>
 </center>
 

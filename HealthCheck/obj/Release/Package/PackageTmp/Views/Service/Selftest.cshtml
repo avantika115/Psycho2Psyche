@@ -1,26 +1,28 @@
 ﻿@model HealthCheck.Models.ServicesModel
-
+@{
+    var i = 1;
+}
 <style>
 
     input[type="radio"] {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
-  transform: scale(1.5);
-}
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+        transform: scale(1.5);
+    }
 
     input[type=radio]:checked ~ .check {
-  border: 5px solid #0DFF92;
-}
+        border: 5px solid #0DFF92;
+    }
 
-input[type=radio]:checked ~ .check::before{
-  background: #0DFF92;
-}
+        input[type=radio]:checked ~ .check::before {
+            background: #0DFF92;
+        }
 
-input[type=radio]:checked ~ label{
-  color: cadetblue;
-}
+    input[type=radio]:checked ~ label {
+        color: cadetblue;
+    }
 </style>
-@using (Html.BeginForm("SubmitTest","Service",FormMethod.Post))
+@using (Html.BeginForm("SubmitTest", "Service", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -50,16 +52,20 @@ input[type=radio]:checked ~ label{
         @foreach (var question in Model.Questions)
         {
             <div class="form-group">
-
-                @foreach (var item in question.Questions)
+                <label>@question.QuestionID) @question.Question</label>
+            </div>
+            <div class="form-group">
+                @foreach (var item in question.QuestionData)
                 {
-                    <div class="col-md-2">
-                        <input type="radio" name="radio_@question.QuestionID" id="radio_@question.QuestionID" />
-                        <label class="" for="radio_@question.QuestionID">@item</label>
-                    </div>
+
+                <div class="col-md-2">
+                    <input type="radio" name="radio_@item.questionno" value="@item.scale" />
+                    @item.option
+                </div>
                 }
             </div>
-            <hr />
+            <hr style="height:2px; background-color:black;" />
+
         }
 
         <div class="form-group">

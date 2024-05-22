@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Providing Psychiatry Services </title>
+    <title>Psychon2Psyche - Providing Psychiatry Services </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -30,11 +30,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("psychon2psyche", "Index", "Home", new { area = "" }, new
-                {
-                    @class = "navbar-brand",
-               style = "color:white; font-size:x-large;"
-                })
+                <a href="/home/index" title="psychon2psyche"><img src="~/Content/images/logo.png" 
+                style="padding: 5px;" width="50" alt="psychon2psyche"/></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="font-size:large;">
@@ -89,7 +86,10 @@
         @RenderBody()
     </div>
     <footer style="position:fixed; bottom:0px; padding:10px; background-color:#d9edf7; width:100%; color:rebeccapurple;">
-        <p class="pull-right">&copy; @DateTime.Now.Year - Psycheo2psyche Services</p>
+        <p class="pull-right">
+            &copy;  Psychon2Psyche <img src="~/Content/images/logo.png"
+     style="" width="30" alt="psychon2psyche" /> - @DateTime.Now.Year
+                    </p>
     </footer>
 
 </body>

@@ -9,18 +9,28 @@
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="jumbotron center-block" style="width:80%; background-color:aliceblue;">
-    <h2>Trust psycheo2psyche with your mental health</h2>
-    <p class="lead">
-        Our mission is simple: to help you feel better, get better and stay better.
+    
+    
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Trust psycheo2psyche with your mental health</h2>
+        <p class="lead">
+            Our mission is simple: to help you feel better, get better and stay better.
+            
+            We bring together self-care, support from qualified therapists and psychiatrists,
+            as well as community access to deliver the best quality mental healthcare for your needs.
 
-        We bring together self-care, support from qualified therapists and psychiatrists,
-        as well as community access to deliver the best quality mental healthcare for your needs.
-    </p>
-    @if (Session["User"] == null)
-    {
-        <p><a href="/Authentication/Signup" class="btn btn-lg btn-cadetblue">Sign up &raquo;</a></p>
-    }
-
+        </p>
+        @if (Session["User"] == null)
+        {
+            <p><a href="/Authentication/Signup" class="btn btn-lg btn-cadetblue">Sign up &raquo;</a></p>
+        }
+    </div>
+    <div class="col-lg-2">
+    <img src="~/Content/images/logo.png"
+     style="" width="230" alt="psychon2psyche" />
+    </div>
+</div>
 </div>
 <div class="row center-block" style="width:80%;">
     <div class="col-md-4">

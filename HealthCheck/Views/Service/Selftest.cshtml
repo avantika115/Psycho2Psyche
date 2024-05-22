@@ -52,20 +52,20 @@
         @foreach (var question in Model.Questions)
         {
             <div class="form-group">
-                <div class="col-md-1">
-                    @i
-                </div>
-                @foreach (var item in question.Questions)
+                <label>@question.QuestionID) @question.Question</label>
+            </div>
+            <div class="form-group">
+                @foreach (var item in question.QuestionData)
                 {
 
-                    <div class="col-md-2">
-                        <input type="radio" name="radio_@question.QuestionID" id="radio_@question.QuestionID" />
-                        <label class="" for="radio_@question.QuestionID">@item</label>
-                    </div>
+                <div class="col-md-2">
+                    <input type="radio" name="radio_@item.questionno" value="@item.scale" />
+                    @item.option
+                </div>
                 }
             </div>
-            <hr style="height:5px; background-color:black;" />
-            i++;
+            <hr style="height:2px; background-color:black;" />
+
         }
 
         <div class="form-group">

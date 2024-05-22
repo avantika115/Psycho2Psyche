@@ -44,14 +44,16 @@
                 }
                 else if (Model.Name == "ADHA")
                 {
-                    <img src="~/Content/images/ADHD.jpg" style="width:300px;" />                    <h2>Get the Right Mental Health Support for Adult ADHD</h2>
+                    <img src="~/Content/images/ADHD.jpg" style="width:300px;" />
+                    <h2>Get the Right Mental Health Support for Adult ADHD</h2>
                     <p class="lead">
                         Living with ADHD (Attention-Deficit Hyperactivity Disorder) can be challenging, but our mental health experts can help. Get quality mental health care from experts that know the ins and outs of ADHD treatment for adults.
                     </p>
                 }
                 else if (Model.Name == "Schizophrenia")
                 {
-                    <img src="~/Content/images/schizophenia.jpg" style="width:300px;" />                    <h2>Schizophrenia</h2>
+                    <img src="~/Content/images/Schizophrenia.jpg" style="width:300px;" />
+                    <h2>Schizophrenia</h2>
                     <p class="lead">
                         Schizophrenia cannot be understood without understanding despair.
                     </p>
@@ -80,6 +82,10 @@
                 @if (Session["User"] != null)
                 {
                     <p><a href="/Service/Selftest" class="btn btn-lg btn-cadetblue">Start self Test &raquo;</a></p>
+                }
+                else
+                {
+                    <p><a href="/Authentication/Signup" class="">Sign-up</a> to check your @Model.Name level. </p>
                 }
 
             </div>

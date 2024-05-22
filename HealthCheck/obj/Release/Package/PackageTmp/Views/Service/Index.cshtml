@@ -11,23 +11,54 @@
                 @if (Model.Name == "Depression")
                 {
                     <img src="~/Content/images/depression.jpg" style="width:300px;" />
+                    <h2>Am I sad or depressed?</h2>
+                    <p class="lead">
+                        Sadness is a normal human emotion whereas depression is a mental health concern that can affect how you think, feel or behave in many ways. Take this quiz to find out whether you are experiencing signs of depression.
+                    </p>
                 }
                 else if (Model.Name == "Alcohol Addiction")
                 {
                     <img src="~/Content/images/alcoholaddiction.jpg" style="width:300px;" />
+                    <h2>Find the strength to overcome Alcohol Addiction</h2>
+                    <p class="lead">
+                        Set out on the path to recovery from alcohol addiction, with P2P.
+                        We’re with you, every step of the way.
+                    </p>
                 }
                 else if (Model.Name == "Anxiety")
                 {
                     <img src="~/Content/images/Anxiety.jpg" style="width:300px;" />
+                    <h2>Get quality care to overcome Generalised Anxiety Disorder</h2>
+                    <p class="lead">
+                        It's okay to feel like you're losing control - but you don't have to go through this alone.
+                        Let us help you.
+                    </p>
                 }
-                else
+                else if (Model.Name == "OCD")
                 {
-                    <img src="~/Content/images/selftest.jpg" style="width:400px;" />
+                    <img src="~/Content/images/OCD.jpg" style="width:300px;" />
+                    <h2>Build a better life with the right treatment for OCD</h2>
+                    <p class="lead">
+                        Obsessive-compulsive disorder (OCD) is a debilitating condition that can be treated and managed with the proper care - Find the best psychiatrists and therapists for OCD treatment, with P2P.
+                    </p>
                 }
-                <h2>@Model.contenttitle</h2>
-                <p class="lead">
-                    @Model.contentdescription
-                </p>
+                else if (Model.Name == "ADHA")
+                {
+                    <img src="~/Content/images/ADHD.jpg" style="width:300px;" />
+                    <h2>Get the Right Mental Health Support for Adult ADHD</h2>
+                    <p class="lead">
+                        Living with ADHD (Attention-Deficit Hyperactivity Disorder) can be challenging, but our mental health experts can help. Get quality mental health care from experts that know the ins and outs of ADHD treatment for adults.
+                    </p>
+                }
+                else if (Model.Name == "Schizophrenia")
+                {
+                    <img src="~/Content/images/Schizophrenia.jpg" style="width:300px;" />
+                    <h2>Schizophrenia</h2>
+                    <p class="lead">
+                        Schizophrenia cannot be understood without understanding despair.
+                    </p>
+                }
+
             </div>
         </div>
         <div class="col-sm-6" style="">
@@ -51,6 +82,10 @@
                 @if (Session["User"] != null)
                 {
                     <p><a href="/Service/Selftest" class="btn btn-lg btn-cadetblue">Start self Test &raquo;</a></p>
+                }
+                else
+                {
+                    <p><a href="/Authentication/Signup" class="">Sign-up</a> to check your @Model.Name level. </p>
                 }
 
             </div>

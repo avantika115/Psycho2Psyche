@@ -10,22 +10,30 @@ namespace HealthCheck.Controllers
     public class AuthenticationController : Controller
     {
         // GET: Authentication
-        public ActionResult Signup()
+        public ActionResult Signup(UserAccountModel user = null)
         {
             Session.Clear();
             Session.Abandon();
-            
-            return View();
+
+            return View(user);
         }
 
         // GET: Authentication/Details/5
-        public ActionResult Login()
+        public ActionResult Login(UserAccountModel user)
         {
-            return View();
+            return View(user);
         }
 
         public ActionResult Logout()
         {
+            
+            try
+            {
+                UserOperations.Logout(Convert.ToString(Session["UserID"]));
+            }
+            catch (Exception ex)
+            {
+            }
             Session.Clear();
             Session.Abandon();
             return RedirectToAction("Login");
@@ -35,16 +43,66 @@ namespace HealthCheck.Controllers
         [HttpPost]
         public ActionResult Create(UserAccountModel user)
         {
-            Session["User"] = user.FullName;
-            return RedirectToAction("Index", "Home");
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string result = UserOperations.SignUp(user);
+                    if (int.TryParse(result, out int value))
+                    {
+                        Session["User"] = user.FullName;
+                        Session["UserID"] = result;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        user.ModelError = result;
+                        user.Password = "";
+                        return RedirectToAction("Signup", user);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    user.ModelError = ex.Message;
+                    user.Password = "";
+                    return RedirectToAction("Signup", user);
+                }
+            }
+            else
+            {
+                user.ModelError = "Invalid Data!";
+                user.Password = "";
+                return RedirectToAction("Signup", user);
+            }
         }
 
         // POST: Authentication/Check
         [HttpPost]
         public ActionResult Check(UserAccountModel user)
         {
-            Session["User"] = user.EmailID;
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                var result = UserOperations.Login(user.EmailID, user.Password);
+                if (int.TryParse(result.Item1, out int value))
+                {
+                    Session["User"] = result.Item2;
+                    Session["UserID"] = result.Item1;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    user.ModelError = result.Item1;
+                    user.Password = "";
+                    return RedirectToAction("Login", user);
+                }
+            }
+            catch (Exception ex)
+            {
+                user.ModelError = ex.Message;
+                user.Password = "";
+                return RedirectToAction("Login", user);
+            }
         }
 
         // GET: Authentication/Edit/5

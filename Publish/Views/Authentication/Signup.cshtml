@@ -1,0 +1,152 @@
+﻿@model HealthCheck.Models.UserAccountModel
+
+@{
+    string maxdate = DateTime.Now.AddYears(-18).ToString("yyyy-MM-dd");
+}
+<style>
+    body {
+        background-image: url('/Content/images/bg3.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron" style="background-color:inherit; ">
+            <div class="col-sm-8" style="padding-left: 110px;">
+                <br />
+                <img src="~/Content/images/logo.png"
+                     style="" width="200" alt="psychon2psyche" />
+                <p style="font-size:xx-large; color:purple;">Welcome to psycheo2psyche</p>
+                <p style=" color:rebeccapurple; padding-right:20px;">
+                    Your Compassionate Guide to Mental Wellness. Navigate Your Mental Health Journey with Ease. As Our Thoughtful Questionnaire Gently Guides
+                    You Towards Understanding. Empower Yourself with Insights,
+                    Find Comfort In Knowledge, And Embark On A Path To Well-Being.
+                </p>
+                <p style=" color:rebeccapurple; padding-right:20px;">
+                    Together, We're Here to Support You Every Step Of The Way.
+                </p>
+
+            </div>
+            <div class="col-sm-4" style="border:1px solid black;
+align-content:center; background-color:#337ab75c;  border-radius:15px 15px;">
+
+                <div class="form-horizontal" style="width:100%;  padding:10px;">
+
+                    @using (Html.BeginForm("Create", "Authentication", FormMethod.Post,
+                        new { @id = "signupform" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <br />
+                        <h4 style="color:white;">Sign up with your email address</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full Name*", maxlength = 30, required = true, style = "font-size:medium;" } })
+                                @if (Model.MobileNo != null)
+                                {
+
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile Number*", maxlength = 10, required = true, pattern = "[0-9]{10}", title = "Mobile Number must be exactly 10 numeric characters." } })
+
+                                @if (Model.MobileNo != null)
+                                {
+
+                                    @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @*@Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Date Of Birth (dd/MM/yyyy)", type = "date", min=mindate } })*@
+                                <input class="form-control text-box single-line" data-val="true" data-val-date="The field Date Of Birth must be a date."
+                                       data-val-required="The Date Of Birth field is required." id="DOB" max="@maxdate" min="1900-01-01" name="DOB" placeholder="Date Of Birth (dd/MM/yyyy)" type="date" value="@Model.DOB">
+
+                                @if (Model.MobileNo != null)
+                                {
+
+                                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", placeholder = "Email ID*", type = "email", required = true, style = "font-size:medium;" } })
+
+                                @if (Model.MobileNo != null)
+                                {
+
+                                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password (min 8 characters)*", type = "password", maxlength = 20, style = "font-size:medium;" } })
+
+                                @if (Model.MobileNo != null)
+                                {
+
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                <div class="col-md-12">
+                                    <p style="color:white;">
+                                        @Html.CheckBoxFor(model => model.IsAdult, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsAdult, "", new { @class = "text-danger" })I am above 18 years of age
+                                    </p>
+                                </div>
+                            </div>*@
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p style="color:white; font-size:small;">
+                                    <input type="checkbox" required />
+                                    I accept Psycheo2psyche’s Terms & Conditions and Privacy Policy
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="text-align:center;">
+                            <div class=" col-md-12">
+
+                                <button type="submit" class="btn btn-cadetblue" style="border-radius: 15px 15px;
+                            background-color:limegreen; color:white; width:150px">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                        if (Model != null)
+                        {
+                            <p class="text-danger" style="font-size:medium;">@Model.ModelError</p>
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+
+

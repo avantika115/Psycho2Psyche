@@ -1,0 +1,102 @@
+﻿@model HealthCheck.Models.UserAccountModel
+
+<style>
+    body {
+        background-image: url('/Content/images/bg3.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron" style="background-color:inherit; ">
+            <div class="col-sm-8" style="padding-left: 110px;">
+                <br />
+                <p style="font-size:xx-large; color:purple;">Welcome to psycheo2psyche</p>
+                <p style=" color:rebeccapurple; padding-right:20px;">
+                    Your Compassionate Guide to Mental Wellness. Navigate Your Mental Health Journey with Ease. As Our Thoughtful Questionnaire Gently Guides
+                    You Towards Understanding. Empower Yourself with Insights,
+                    Find Comfort In Knowledge, And Embark On A Path To Well-Being.
+                </p>   
+                <p style=" color:rebeccapurple; padding-right:20px;">
+                    Together, We're Here to Support You Every Step Of The Way.
+                </p>  
+                
+            </div>
+            <div class="col-sm-4" style="border:1px solid black;
+align-content:center; background-color:#337ab75c;  border-radius:15px 15px;">
+
+                <div class="form-horizontal" style="width:100%;  padding:10px;">
+
+                    @using (Html.BeginForm("Create", "Authentication", FormMethod.Post, 
+                        new {  @id = "signupform" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <br />
+                        <h4 style="color:white;">Sign up with your email address</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full Name*", maxlength = 30, required = true, style = "font-size:medium;" } })
+                                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", placeholder = "Email ID*", type = "email", required = true, style = "font-size:medium;" } })
+                                @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password (min 8 characters)*", type = "password", maxlength = 20, style = "font-size:medium;" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p style="color:white;">
+                                    @Html.CheckBoxFor(model => model.IsAdult, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.IsAdult, "", new { @class = "text-danger" })I am above 18 years of age
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p style="color:white;">
+                                    <input type="checkbox" required />
+                                    I accept Psycheo2psyche’s Terms & Conditions and Privacy Policy
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="text-align:center;">
+                            <div class=" col-md-12">
+                                
+                                <button type="submit" class="btn btn-cadetblue" style="border-radius: 15px 15px;
+                            background-color:limegreen; color:white; width:150px">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
